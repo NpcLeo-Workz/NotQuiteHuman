@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -27,6 +28,21 @@ namespace NotQuiteHuman
         {
             services.AddControllersWithViews();
             services.AddDbContext<NotQuiteHumanContext>(options => options.UseSqlServer(Configuration.GetConnectionString("LocalDbConnection")));
+            services.AddDefaultIdentity<IdentityUser>().AddEntityFrameworkStores<NotQuiteHumanContext>();
+            services.AddRazorPages();
+
+            services.Configure<IdentityOptions>(options =>
+            {
+                //Password settings
+                options.Password.RequireDigit = true;
+                options.Password.RequireUppercase = true;
+                options.Password.RequiredLength = 6;
+                options.Password.RequiredUniqueChars = 1;
+
+                //User settings
+                options.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890_@.";
+                options.User.RequireUniqueEmail= true;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -46,7 +62,7 @@ namespace NotQuiteHuman
             app.UseStaticFiles();
 
             app.UseRouting();
-
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
@@ -54,6 +70,7 @@ namespace NotQuiteHuman
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapRazorPages();
             });
         }
     }

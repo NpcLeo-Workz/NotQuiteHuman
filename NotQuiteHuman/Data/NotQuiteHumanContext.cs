@@ -1,8 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using NotQuiteHuman.Models;
+using Microsoft.AspNetCore.Identity;
+
 namespace NotQuiteHuman.Data
 {
-    public class NotQuiteHumanContext : DbContext
+    public class NotQuiteHumanContext : IdentityDbContext<IdentityUser>
     {
         public NotQuiteHumanContext(DbContextOptions<NotQuiteHumanContext> options) : base(options) { }
 
@@ -14,7 +17,7 @@ namespace NotQuiteHuman.Data
         public DbSet<RaceTrait> RaceTraits { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            
+            base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Race>().ToTable("Race");
             modelBuilder.Entity<Trait>().ToTable("Trait");
             modelBuilder.Entity<Language>().ToTable("Language");
