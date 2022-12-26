@@ -1,0 +1,43 @@
+﻿:root {
+    --main-color: #D0A85C;
+}
+/*Body*/
+body {
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(/Images/moonbg.jpg);
+}
+* {
+    color: var(--main-color) !important;
+
+}
+button, .form-control, input {
+    background-color: transparent !important;
+    border-color: var(--main-color) !important;
+}
+a {
+    color: var(--main-color);
+}
+.navbar {
+    border-color: var(--main-color) !important;
+}
+.navbar-nav{
+    margin-left:auto;
+}
+/*Navbar*/
+a.navbar-brand,
+a.navbar-text,
+a.nav-link {
+    color: var(--main-color);
+}
+.btn-link {
+    color: var(--main-color);
+}
+button.navbar-toggler {
+    border-color: var(--main-color);
+}
+span.toggle {
+    /*overwrite toggle icon colorstroke*/
+    background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='rgba(208, 168, 92, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+.footer {
+    border-color: var(--main-color) !important;
+}
