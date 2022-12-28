@@ -28,7 +28,7 @@ namespace NotQuiteHuman
         {
             services.AddControllersWithViews();
             services.AddDbContext<NotQuiteHumanContext>(options => options.UseSqlServer(Configuration.GetConnectionString("LocalDbConnection")));
-            services.AddDefaultIdentity<IdentityUser>().AddEntityFrameworkStores<NotQuiteHumanContext>();
+            services.AddDefaultIdentity<IdentityUser>().AddRoles<IdentityRole>().AddEntityFrameworkStores<NotQuiteHumanContext>();
             services.AddRazorPages();
 
             services.Configure<IdentityOptions>(options =>
@@ -46,7 +46,7 @@ namespace NotQuiteHuman
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IServiceProvider serviceProvider)
         {
             if (env.IsDevelopment())
             {
@@ -72,6 +72,24 @@ namespace NotQuiteHuman
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
+            CreateRoles(serviceProvider).Wait();
+        }
+        public async Task CreateRoles(IServiceProvider serviceProvider)
+        {
+            RoleManager<IdentityRole> roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+            NotQuiteHumanContext context = serviceProvider.GetRequiredService<NotQuiteHumanContext>();
+
+            IdentityResult result;
+
+            bool rolecheck = await roleManager.RoleExistsAsync("user");
+            if (!rolecheck)
+                result = await roleManager.CreateAsync(new IdentityRole("user"));
+
+            rolecheck = await roleManager.RoleExistsAsync("admin");
+            if (!rolecheck)
+                result = await roleManager.CreateAsync(new IdentityRole("admin"));
+
+            context.SaveChanges();
         }
     }
 }

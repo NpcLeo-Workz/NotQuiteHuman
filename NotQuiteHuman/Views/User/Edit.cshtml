@@ -1,0 +1,21 @@
+﻿@model NotQuiteHuman.ViewModels.UserEditViewModel
+@{
+    ViewData["Title"] = "User Edit";
+}
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>                     
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input asp-for="UserId" class="form-control" hidden />
+                <input type="submit" value="Edit" class="btn btn-primary" />
+                <a asp-controller="User" asp-action="Index" class="btn btn-primary">Back</a>
+            </div>
+        </form>
+    </div>
+</div>
