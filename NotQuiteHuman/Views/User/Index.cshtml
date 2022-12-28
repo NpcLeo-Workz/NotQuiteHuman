@@ -1,0 +1,42 @@
+﻿@model NotQuiteHuman.ViewModels.UsersViewModel
+@{
+    ViewData["Title"] = "Index";
+
+}
+<p>
+    <a asp-action="Create">create</a>
+</p>
+<table>
+    <thead>
+        <tr>
+        <th class="col-md-4">
+                @Html.DisplayNameFor(v => v.Users[0].UserName)
+        </th>
+       
+    <th class="col-md-4">
+                @Html.DisplayNameFor(v => v.Users[0].Email)
+    </th>
+    </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model.Users)
+        {
+                <tr>
+                    <td class="col-md-4">
+                    @Html.DisplayFor(modelitem => user.UserName)
+                    </td>
+                   
+                    <td class="col-md-4">
+                    @Html.DisplayFor(modelitem => user.Email)
+                    </td>
+                    <td class="col-md-4">
+                        <a asp-action="Edit" asp-route-id="@user.Id">Edit</a>
+
+                    </td>
+                    <td>
+                        <a asp-action="Delete" asp-route-id="@user.Id">Delete</a>
+                    </td>
+                </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,42 @@
+﻿@model NotQuiteHuman.ViewModels.TraitsOverviewViewModel;
+@{
+    ViewData["Title"] = "Admin - Traits";
+}
+<form asp-action="CreateTrait" method="get">
+    <div class="form-group">
+        <input type="submit" value="New Trait" class="btn" />
+    </div>
+</form>
+
+<table class="table table-bordered">
+    <tr>     
+        <th>@Html.DisplayNameFor(x=>x.Traits[0].Name)</th>
+        <th>@Html.DisplayNameFor(x=>x.Traits[0].Description)</th>
+        
+        @if (this.User.Identity.IsAuthenticated)
+        {
+            @if (User.IsInRole("admin"))
+            {
+                <th></th>
+                <th></th>   
+            }
+        }
+            
+    </tr>
+    @foreach(var trait in Model.Traits){
+        <tr>          
+            <td>@trait.Name</td>
+            <td>@trait.Description</td>
+            
+            @if (this.User.Identity.IsAuthenticated)
+            {
+                @if (User.IsInRole("admin"))
+                {
+                    <td><a class="btn" asp-action="EditTrait" asp-route-id="@trait.Id">Edit</a></td>
+                    <td><a class="btn" asp-action="DeleteTrait" asp-route-id="@trait.Id">Delete</a></td>
+                }
+            }
+        </tr>
+    }
+    
+</table>

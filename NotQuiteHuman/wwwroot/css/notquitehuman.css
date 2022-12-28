@@ -4,6 +4,7 @@
 /*Body*/
 body {
     background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(/Images/moonbg.jpg);
+    
 }
 * {
     color: var(--main-color) !important;
@@ -41,3 +42,43 @@ span.toggle {
 .footer {
     border-color: var(--main-color) !important;
 }
+/*Traits*/
+.traitselect{
+    width: 100%
+}
+table{
+    min-width: 100%;
+}
+tbody{
+    min-width:100%;     
+    overflow-y: auto;
+}
+tr {
+    border: 2px solid;
+}
+tr.trait:hover, tr.trait:focus-within {
+    background: linear-gradient(0deg, rgba(208, 168, 92, 0.2), rgba(208, 168, 92, 0.2));
+    
+}
+td {    
+    position: relative;   
+}
+td.col-8,
+td.col-4,
+th.col-8,
+th.col-4{
+    padding: 0px;
+}
+
+    td > a:first-child {
+        width:100%;
+        display: flex;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        padding-right: 16px;
+        padding-left: 8px;
+        text-decoration: none;
+        color: inherit;
+        z-index: 0;
+    }
+
