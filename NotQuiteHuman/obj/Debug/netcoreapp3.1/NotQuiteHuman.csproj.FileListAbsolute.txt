@@ -205,3 +205,12 @@ E:\School\projectwebapps\project\NotQuiteHuman\NotQuiteHuman\obj\Debug\netcoreap
 E:\School\projectwebapps\project\NotQuiteHuman\NotQuiteHuman\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\_ViewImports.cshtml.g.cs
 E:\School\projectwebapps\project\NotQuiteHuman\NotQuiteHuman\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\_ViewStart.cshtml.g.cs
 E:\School\projectwebapps\project\NotQuiteHuman\NotQuiteHuman\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LoginPartial.cshtml.g.cs
+E:\School\projectwebapps\project\NotQuiteHuman\NotQuiteHuman\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Users.cshtml.g.cs
+E:\School\projectwebapps\project\NotQuiteHuman\NotQuiteHuman\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Traits.cshtml.g.cs
+E:\School\projectwebapps\project\NotQuiteHuman\NotQuiteHuman\obj\Debug\netcoreapp3.1\Razor\Views\User\Index.cshtml.g.cs
+E:\School\projectwebapps\project\NotQuiteHuman\NotQuiteHuman\obj\Debug\netcoreapp3.1\Razor\Views\User\Edit.cshtml.g.cs
+E:\School\projectwebapps\project\NotQuiteHuman\NotQuiteHuman\obj\Debug\netcoreapp3.1\Razor\Views\User\Create.cshtml.g.cs
+E:\School\projectwebapps\project\NotQuiteHuman\NotQuiteHuman\obj\Debug\netcoreapp3.1\Razor\Views\User\Delete.cshtml.g.cs
+E:\School\projectwebapps\project\NotQuiteHuman\NotQuiteHuman\obj\Debug\netcoreapp3.1\Razor\Views\Admin\DeleteTrait.cshtml.g.cs
+E:\School\projectwebapps\project\NotQuiteHuman\NotQuiteHuman\obj\Debug\netcoreapp3.1\Razor\Views\Admin\EditTrait.cshtml.g.cs
+E:\School\projectwebapps\project\NotQuiteHuman\NotQuiteHuman\obj\Debug\netcoreapp3.1\Razor\Views\Admin\CreateTrait.cshtml.g.cs

@@ -1,0 +1,10 @@
+﻿@model NotQuiteHuman.ViewModels.UserDeleteViewModel
+@{
+}
+<h3>Are you sure?</h3>
+<form asp-action="Delete">
+    <input type="hidden" asp-for="UserId" />
+    <input type="submit" value="Delete" class="btn btn-primary" />
+    <a asp-action="Index">Back to List</a>
+
+</form>

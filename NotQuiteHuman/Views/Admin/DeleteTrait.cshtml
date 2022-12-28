@@ -1,0 +1,24 @@
+﻿@model NotQuiteHuman.ViewModels.DeleteTraitViewModel;
+@{
+    ViewData["Title"] = Model.Name;
+}
+<table>
+    <tr>
+        <td>@Html.DisplayNameFor(x=>this.Model.Id)</td>
+        <td>@this.Model.Id</td>
+    </tr>
+    <tr>
+        <td>@Html.DisplayNameFor(x=>this.Model.Name)</td>
+        <td>@this.Model.Name</td>
+    </tr>
+    <tr>
+        <td>@Html.DisplayNameFor(x=>this.Model.Description)</td>
+        <td>@this.Model.Description</td>
+    </tr>
+</table>
+<form class="mt-5" asp-action="DeleteTrait">
+    <div class="form-group">
+        <input type="submit" value="Delete" class="btn"/>
+        <a asp-action="Traits" class="btn" >Back</a>
+    </div>
+</form>
