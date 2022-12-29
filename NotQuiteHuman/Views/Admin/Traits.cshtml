@@ -7,7 +7,15 @@
         <input type="submit" value="New Trait" class="btn" />
     </div>
 </form>
-
+<form asp-controller="Admin" asp-action="TraitSearch" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Search
+            <input asp-for="TraitSearch"/>
+            <input type="submit" value="search" class="btn btn-default"/>
+        </p>
+    </div>
+</form>
 <table class="table table-bordered">
     <tr>     
         <th>@Html.DisplayNameFor(x=>x.Traits[0].Name)</th>

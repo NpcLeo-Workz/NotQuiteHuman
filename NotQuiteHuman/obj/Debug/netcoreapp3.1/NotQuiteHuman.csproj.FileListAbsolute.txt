@@ -214,3 +214,7 @@ E:\School\projectwebapps\project\NotQuiteHuman\NotQuiteHuman\obj\Debug\netcoreap
 E:\School\projectwebapps\project\NotQuiteHuman\NotQuiteHuman\obj\Debug\netcoreapp3.1\Razor\Views\Admin\DeleteTrait.cshtml.g.cs
 E:\School\projectwebapps\project\NotQuiteHuman\NotQuiteHuman\obj\Debug\netcoreapp3.1\Razor\Views\Admin\EditTrait.cshtml.g.cs
 E:\School\projectwebapps\project\NotQuiteHuman\NotQuiteHuman\obj\Debug\netcoreapp3.1\Razor\Views\Admin\CreateTrait.cshtml.g.cs
+E:\School\projectwebapps\project\NotQuiteHuman\NotQuiteHuman\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Languages.cshtml.g.cs
+E:\School\projectwebapps\project\NotQuiteHuman\NotQuiteHuman\obj\Debug\netcoreapp3.1\Razor\Views\Admin\CreateLanguage.cshtml.g.cs
+E:\School\projectwebapps\project\NotQuiteHuman\NotQuiteHuman\obj\Debug\netcoreapp3.1\Razor\Views\Admin\EditLanguage.cshtml.g.cs
+E:\School\projectwebapps\project\NotQuiteHuman\NotQuiteHuman\obj\Debug\netcoreapp3.1\Razor\Views\Admin\DeleteLanguage.cshtml.g.cs
