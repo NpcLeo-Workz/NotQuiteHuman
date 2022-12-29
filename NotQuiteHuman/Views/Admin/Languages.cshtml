@@ -1,0 +1,53 @@
+﻿@model NotQuiteHuman.ViewModels.LanguageOverViewViewModel;
+@{
+    ViewData["Title"] = "Admin - Languages";
+}
+<form asp-action="CreateLanguage" method="get">
+    <div class="form-group">
+        <input type="submit" value="New Language" class="btn" />
+    </div>
+</form>
+<form asp-controller="Admin" asp-action="LanguageSearch" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Search
+            <input asp-for="LanguageSearch"/>
+            <input type="submit" value="search" class="btn btn-default"/>
+        </p>
+    </div>
+</form>
+<table class="table table-bordered">
+    <tr>
+        <th>@Html.DisplayNameFor(x=>x.Languages[0].Name)</th>
+        <th>@Html.DisplayNameFor(x=>x.Languages[0].Type)</th>
+        <th>@Html.DisplayNameFor(x=>x.Languages[0].Description)</th>
+
+        @if (this.User.Identity.IsAuthenticated)
+        {
+            @if (User.IsInRole("admin"))
+            {
+                <th></th>
+                <th></th>
+            }
+        }
+
+    </tr>
+    @foreach (var language in Model.Languages)
+    {
+        <tr>
+            <td>@language.Name</td>
+            <td>@language.Type</td>
+            <td>@language.Description</td>
+
+            @if (this.User.Identity.IsAuthenticated)
+            {
+                @if (User.IsInRole("admin"))
+                {
+                    <td><a class="btn" asp-action="EditLanguage" asp-route-id="@language.Id">Edit</a></td>
+                    <td><a class="btn" asp-action="DeleteLanguage" asp-route-id="@language.Id">Delete</a></td>
+                }
+            }
+        </tr>
+    }
+
+</table>
