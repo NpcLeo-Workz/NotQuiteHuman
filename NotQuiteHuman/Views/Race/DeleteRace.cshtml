@@ -1,0 +1,91 @@
+﻿@model NotQuiteHuman.ViewModels.DeleteRaceViewModel;
+@{
+    ViewData["Title"] = Model.Name;
+}
+<div class="row">
+    <table>
+        <tr>
+            <td>@Html.DisplayNameFor(x=>this.Model.Id)</td>
+            <td>@this.Model.Id</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(x=>this.Model.Name)</td>
+            <td>@this.Model.Name</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(x=>this.Model.Size)</td>
+            <td>@this.Model.Size</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(x=>this.Model.WalkSpeed)</td>
+            <td>@this.Model.WalkSpeed</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(x=>this.Model.FlySpeed)</td>
+            <td>@this.Model.FlySpeed</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(x=>this.Model.ClimbSpeed)</td>
+            <td>@this.Model.ClimbSpeed</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(x=>this.Model.ClimbSpeed)</td>
+            <td>@this.Model.ClimbSpeed</td>
+        </tr>
+    </table>
+    <table >
+        <tr>
+            <td>@Html.DisplayNameFor(x=>this.Model.Str)</td>
+            <td>@this.Model.Str</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(x=>this.Model.Dex)</td>
+            <td>@this.Model.Dex</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(x=>this.Model.Con)</td>
+            <td>@this.Model.Con</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(x=>this.Model.Int)</td>
+            <td>@this.Model.Int</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(x=>this.Model.Wis)</td>
+            <td>@this.Model.Wis</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(x=>this.Model.Cha)</td>
+            <td>@this.Model.Cha</td>
+        </tr>
+    </table>
+    <table >
+        <tr>
+            <td>@Html.DisplayNameFor(x=>this.Model.Language1.Name)</td>
+            <td>@this.Model.Language1.Name</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(x=>this.Model.Language2.Name)</td>
+            <td>@this.Model.Language2.Name</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(x=>this.Model.Language3.Name)</td>
+            <td>@this.Model.Language3.Name</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(x=>this.Model.Trait1.Name)</td>
+            <td>@this.Model.Trait1.Name</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(x=>this.Model.Trait2.Name)</td>
+            <td>@this.Model.Trait2.Name</td>
+        </tr>      
+    </table>
+</div>
+
+<form class="mt-5" asp-action="DeleteRace">
+    <div class="form-group">
+        <input type="submit" value="Delete" class="btn"/>
+        <a asp-action="Races" class="btn" >Back</a>
+    </div>
+</form>

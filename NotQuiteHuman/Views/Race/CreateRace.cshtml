@@ -1,0 +1,109 @@
+﻿@model NotQuiteHuman.ViewModels.CreateRaceViewModel
+@{
+    ViewData["Title"] = "Create Races";
+}
+<div class="row">
+    <form asp-action="CreateRace" method="post" asp-method="post">
+        <div class="row">
+
+        
+        <div class="row col-4">
+            <div class="form-group">
+                <label asp-for="Name" class="control-label">@Html.DisplayNameFor(model => this.Model.Name)</label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+           
+            <div class="form-group">
+                <label asp-for="WalkSpeed" class="control-label">@Html.DisplayNameFor(model => this.Model.WalkSpeed)</label>
+                <input asp-for="WalkSpeed" class="form-control" />
+                <span asp-validation-for="WalkSpeed" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SwimSpeed" class="control-label">@Html.DisplayNameFor(model => this.Model.SwimSpeed)</label>
+                <input asp-for="SwimSpeed" class="form-control" />
+                <span asp-validation-for="SwimSpeed" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FlySpeed" class="control-label">@Html.DisplayNameFor(model => this.Model.FlySpeed)</label>
+                <input asp-for="FlySpeed" class="form-control" />
+                <span asp-validation-for="FlySpeed" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ClimbSpeed" class="control-label">@Html.DisplayNameFor(model => this.Model.ClimbSpeed)</label>
+                <input asp-for="ClimbSpeed" class="form-control" />
+                <span asp-validation-for="ClimbSpeed" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CreatureType" class="control-label">@Html.DisplayNameFor(model => this.Model.CreatureType)</label>
+                <input asp-for="CreatureType" class="form-control" />
+                <span asp-validation-for="CreatureType" class="text-danger"></span>
+            </div>
+           
+        </div>
+        <div class="row col-4">
+             <div class="form-group">
+                <label asp-for="Str" class="control-label">@Html.DisplayNameFor(model => this.Model.Str)</label>
+                <input asp-for="Str" class="form-control" />
+                <span asp-validation-for="Str" class="text-danger"></span>
+          
+                <label asp-for="Dex" class="control-label">@Html.DisplayNameFor(model => this.Model.Dex)</label>
+                <input asp-for="Dex" class="form-control" />
+                <span asp-validation-for="Dex" class="text-danger"></span>
+            
+                <label asp-for="Int" class="control-label">@Html.DisplayNameFor(model => this.Model.Int)</label>
+                <input asp-for="Int" class="form-control" />
+                <span asp-validation-for="Int" class="text-danger"></span>
+
+                <label asp-for="Wis" class="control-label">@Html.DisplayNameFor(model => this.Model.Wis)</label>
+                <input asp-for="Wis" class="form-control" />
+                <span asp-validation-for="Wis" class="text-danger"></span>
+
+                <label asp-for="Cha" class="control-label">@Html.DisplayNameFor(model => this.Model.Cha)</label>
+                <input asp-for="Cha" class="form-control" />
+                <span asp-validation-for="Cha" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Size" class="control-label">@Html.DisplayNameFor(model => this.Model.Size)</label>
+                <input asp-for="Size" class="form-control" />
+                <span asp-validation-for="Size" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="form-group">
+                <select asp-for="Language1Id" asp-items="Model.Languages">
+                </select>
+            </div>
+            <div class="form-group">
+                <select asp-for="Language2Id" asp-items="Model.Languages">
+                </select>
+            </div>
+            <div class="form-group">
+                <select asp-for="Language3Id" asp-items="Model.Languages">
+                </select>
+            </div>
+            <div class="form-group">
+                <select asp-for="SelectedTrait1Id" asp-items="Model.Traits">
+                </select>               
+            </div>
+            <div class="form-group">
+                <select asp-for="SelectedTrait2Id" asp-items="Model.Traits">
+                </select>
+            </div>
+        </div>        
+        </div>
+        <div class="form-group ml-2">
+            <input type="submit" value="Create" class="btn" />
+            <a asp-action="Index" class="btn">Back</a>
+        </div>
+    </form>   
+</div>
+
+@section Scripts{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+       
+
+    }
+    }
+

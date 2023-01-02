@@ -2,11 +2,16 @@
 @{
     ViewData["Title"] = "Admin - Languages";
 }
-<form asp-action="CreateLanguage" method="get">
-    <div class="form-group">
-        <input type="submit" value="New Language" class="btn" />
-    </div>
-</form>
+@if (this.User.Identity.IsAuthenticated)
+{
+    <form asp-action="CreateLanguage" method="get">
+        <div class="form-group">
+            <input type="submit" value="New Language" class="btn" />
+        </div>
+    </form>
+}
+
+
 <form asp-controller="Admin" asp-action="LanguageSearch" method="get">
     <div class="form-actions no-color">
         <p>

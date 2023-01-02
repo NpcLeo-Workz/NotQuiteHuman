@@ -23,6 +23,14 @@ a {
 .navbar-nav{
     margin-left:auto;
 }
+/*Home*/
+.home{
+    padding-top: 13rem !important;  
+}
+.display-6{
+    font-size: 7rem !important;
+    font-weight: bold;
+}
 /*Navbar*/
 a.navbar-brand,
 a.navbar-text,

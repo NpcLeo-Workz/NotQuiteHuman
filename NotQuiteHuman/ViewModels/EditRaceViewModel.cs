@@ -5,8 +5,10 @@ using System.ComponentModel.DataAnnotations;
 
 namespace NotQuiteHuman.ViewModels
 {
-    public class CreateRaceViewModel
+    public class EditRaceViewModel
     {
+        [Key]
+        public int Id { get; set; }
         [Required]
         public string Name { get; set; }
         public string Size { get; set; }
@@ -21,14 +23,14 @@ namespace NotQuiteHuman.ViewModels
         public int Con { get; set; }
         public int Int { get; set; }
         public int Wis { get; set; }
-        public int Cha { get; set; }      
+        public int Cha { get; set; }
         public SelectList Languages { get; set; }
-        public int Language1Id { get; set; } 
-        public int Language2Id { get; set; } 
+        public int Language1Id { get; set; }
+        public int Language2Id { get; set; }
         public int Language3Id { get; set; }
         public int SelectedTrait1Id { get; set; }
         public int SelectedTrait2Id { get; set; }
         public SelectList Traits { get; set; }
-       
+
     }
 }
