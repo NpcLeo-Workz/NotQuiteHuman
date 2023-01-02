@@ -2,11 +2,15 @@
 @{
     ViewData["Title"] = "Admin - Traits";
 }
-<form asp-action="CreateTrait" method="get">
-    <div class="form-group">
-        <input type="submit" value="New Trait" class="btn" />
-    </div>
-</form>
+@if (this.User.Identity.IsAuthenticated)
+{
+    <form asp-action="CreateTrait" method="get">
+        <div class="form-group">
+            <input type="submit" value="New Trait" class="btn" />
+        </div>
+    </form>
+}
+
 <form asp-controller="Admin" asp-action="TraitSearch" method="get">
     <div class="form-actions no-color">
         <p>

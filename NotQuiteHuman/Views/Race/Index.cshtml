@@ -1,12 +1,16 @@
 ﻿@model NotQuiteHuman.ViewModels.RaceOverviewViewModel;
 @{
-    ViewData["Title"] = "Admin - Languages";
+    ViewData["Title"] = "Races";
 }
-<form asp-action="CreateRace" method="get">
-    <div class="form-group">
-        <input type="submit" value="New Language" class="btn" />
-    </div>
-</form>
+@if (this.User.Identity.IsAuthenticated)
+{
+    <form asp-action="CreateRace" method="get">
+        <div class="form-group">
+            <input type="submit" value="New Race" class="btn" />
+        </div>
+    </form>
+}
+
 <form asp-controller="Race" asp-action="RaceSearch" method="get">
     <div class="form-actions no-color">
         <p>
@@ -36,27 +40,31 @@
         }
 
     </tr>
-    @foreach (var race in Model.Races)
+    @if(Model.Races != null)
     {
-        <tr>
-            <td>@race.Name</td>
-            <td>@race.AbilityScoreBonus.Strength</td>
-            <td>@race.AbilityScoreBonus.Dexterity</td>
-            <td>@race.AbilityScoreBonus.Constitution</td>
-            <td>@race.AbilityScoreBonus.Intelligence</td>
-            <td>@race.AbilityScoreBonus.Wisdom</td>
-            <td>@race.AbilityScoreBonus.Charisma</td>
+        @foreach (var race in Model.Races)
+        {
+            <tr>
+                <td>@race.Name</td>
+                <td>@race.AbilityScoreBonus.Strength</td>
+                <td>@race.AbilityScoreBonus.Dexterity</td>
+                <td>@race.AbilityScoreBonus.Constitution</td>
+                <td>@race.AbilityScoreBonus.Intelligence</td>
+                <td>@race.AbilityScoreBonus.Wisdom</td>
+                <td>@race.AbilityScoreBonus.Charisma</td>
             
 
-            @if (this.User.Identity.IsAuthenticated)
-            {
-                @if (User.IsInRole("admin"))
+                @if (this.User.Identity.IsAuthenticated)
                 {
-                    <td><a class="btn" asp-action="EditRace" asp-route-id="@race.Id">Edit</a></td>
-                    <td><a class="btn" asp-action="DeleteRace" asp-route-id="@race.Id">Delete</a></td>
+                    @if (User.IsInRole("admin"))
+                    {
+                        <td><a class="btn" asp-action="EditRace" asp-route-id="@race.Id">Edit</a></td>
+                        <td><a class="btn" asp-action="DeleteRace" asp-route-id="@race.Id">Delete</a></td>
+                    }
                 }
-            }
-        </tr>
+            </tr>
+        }
     }
+    
 
 </table>
