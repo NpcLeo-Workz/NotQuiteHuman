@@ -20,11 +20,18 @@ namespace NotQuiteHuman.Controllers
 
         public IActionResult Index()
         {
+            //Home Page
             return View();
         }
 
         public IActionResult Privacy()
         {
+            //Easter Egg
+            return View();
+        }
+        public IActionResult AboutUs()
+        {
+            //About us Page
             return View();
         }
 
