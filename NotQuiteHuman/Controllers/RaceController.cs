@@ -22,6 +22,7 @@ namespace NotQuiteHuman.Controllers
         {
             RaceOverviewViewModel viewModel = new RaceOverviewViewModel()
             {
+                //Race overview Page
                 Races = _context.Races.ToList(),
                 AbilityScoreBonuses = _context.AbilityScoreBonus.ToList()
 
@@ -30,6 +31,7 @@ namespace NotQuiteHuman.Controllers
         }
         public IActionResult DeleteRace(int? id)
         {
+            //Delete Race page
             if (id == null) { return NotFound(); }
             Race race = _context.Races.Where(x => x.Id == id).Include(x => x.AbilityScoreBonus).FirstOrDefault();
             if (race == null) { return NotFound(); }
@@ -62,15 +64,8 @@ namespace NotQuiteHuman.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteRaceConfirm(int id)
         {
+            //Delete race Action
             Race race = await _context.Races.FindAsync(id);
-            foreach(var item in _context.RaceTraits.Where(_ => _.RaceId== race.Id))
-            {
-                _context.RaceTraits.Remove(item);
-            }
-            foreach(var item in _context.RaceLanguages.Where(_ => _.RaceId== race.Id))
-            {
-                _context.RaceLanguages.Remove(item);
-            }
             _context.Races.Remove(race);
             await _context.SaveChangesAsync();
 
@@ -78,6 +73,7 @@ namespace NotQuiteHuman.Controllers
         }
         public IActionResult EditRace(int? id)
         {
+            //Edit Race Page
             if (id == null) { return NotFound(); }
             Race race = _context.Races.Where(x => x.Id == id).Include(x=>x.AbilityScoreBonus).FirstOrDefault();
             if (race == null) { return NotFound(); }
@@ -85,6 +81,7 @@ namespace NotQuiteHuman.Controllers
             {
                 Languages = new SelectList(_context.Languages.ToList(), "Id", "Name"),
                 Traits = new SelectList(_context.Traits.ToList(), "Id", "Name"),
+                //Sets the Id's for language and Traits but not the current Item
                 Language1Id = _context.RaceLanguages.Where(x=>x.RaceId == id).ToList()[0].Id ,
                 Language2Id = _context.RaceLanguages.Where(x => x.RaceId == id).ToList()[1].Id,
                 Language3Id = _context.RaceLanguages.Where(x => x.RaceId == id).ToList()[2].Id,
@@ -112,6 +109,7 @@ namespace NotQuiteHuman.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> EditRace(EditRaceViewModel viewModel)
         {
+            //Edit Race action
             if (ModelState.IsValid)
             {
                 AbilityScoreBonus abilityScoreBonus = new AbilityScoreBonus()
@@ -189,6 +187,7 @@ namespace NotQuiteHuman.Controllers
         }
         public IActionResult CreateRace()
         {
+            //Create race page
             CreateRaceViewModel viewModel = new CreateRaceViewModel()
             {                              
                 Languages = new SelectList( _context.Languages.ToList(), "Id", "Name"),
@@ -201,8 +200,10 @@ namespace NotQuiteHuman.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> CreateRace(CreateRaceViewModel viewModel)
         {
+            //Create Race Function
             if (ModelState.IsValid)
             {
+                //Check for Existing Abilityscorebonus
                 AbilityScoreBonus abilityScoreBonus = new AbilityScoreBonus()
                 {
                     Strength = viewModel.Str,
@@ -219,11 +220,13 @@ namespace NotQuiteHuman.Controllers
                 && c.Charisma == abilityScoreBonus.Charisma).FirstOrDefault();
                 if (abilityScoreBonusCheck == null)
                 {
+                    //if it doesnt exists create a new one
                     _context.Add(abilityScoreBonus);
                     await _context.SaveChangesAsync();
                 }
                 if (_context.Races.Where(x=>x.Name == viewModel.Name).FirstOrDefault() == null)
                 {
+                    //Create the race with link to abilityscorebonus
                      _context.Add(new Race()
                         {
                             Name = viewModel.Name,
@@ -241,7 +244,7 @@ namespace NotQuiteHuman.Controllers
                         });
                     await _context.SaveChangesAsync();
                     //Check if exists not implemented
-                    
+                    //create link with languages and traits
                     _context.Add(new RaceLanguage()
                     {
                         RaceId = _context.Races.Where(x => x.Name == viewModel.Name).FirstOrDefault().Id,
@@ -278,6 +281,7 @@ namespace NotQuiteHuman.Controllers
         }
         public IActionResult RaceSearch(RaceOverviewViewModel vm)
         {
+            //Search filter for races
             if (!string.IsNullOrEmpty(vm.RaceSearch))
             {
                 vm.Races = _context.Races.Where(x => x.Name.Contains(vm.RaceSearch)).ToList();

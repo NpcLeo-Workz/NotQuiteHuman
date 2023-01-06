@@ -20,6 +20,7 @@ namespace NotQuiteHuman.Controllers
         }
         public IActionResult Index()
         {
+            // User overview page
             UsersViewModel viewModel = new UsersViewModel()
             {
                 Users = _userManager.Users.ToList()
@@ -28,6 +29,7 @@ namespace NotQuiteHuman.Controllers
         }
         public IActionResult Edit(string id)
         {
+            //Edit user Page
             IdentityUser user = _userManager.Users.Where(k => k.Id == id).FirstOrDefault();
 
 
@@ -51,6 +53,7 @@ namespace NotQuiteHuman.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(UserEditViewModel viewModel)
         {
+            //Edit User Action
             if (ModelState.IsValid) 
             { 
                 IdentityUser user = await _userManager.FindByIdAsync(viewModel.UserId);
@@ -65,6 +68,7 @@ namespace NotQuiteHuman.Controllers
         }
         public IActionResult Create()
         {
+            //Create user page
             UserCreateViewModel viewModel= new UserCreateViewModel()
             {
                 Roles = new SelectList(_roleManager.Roles.ToList(), "Id", "Name")
@@ -76,6 +80,7 @@ namespace NotQuiteHuman.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(UserCreateViewModel viewModel)
         {
+            // Create User action
             if (ModelState.IsValid)
             {
                 IdentityUser user = new IdentityUser()
@@ -97,6 +102,7 @@ namespace NotQuiteHuman.Controllers
         }
         public async Task<IActionResult> Delete(string id)
         {
+            //Delete user page
             IdentityUser user = await _userManager.FindByIdAsync(id); if (user == null) { return NotFound(); }
             UserDeleteViewModel viewModel = new UserDeleteViewModel()
             {
@@ -109,6 +115,7 @@ namespace NotQuiteHuman.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
+            // Delete User Action
             IdentityUser user = await _userManager.FindByIdAsync(id);
             if (user != null)
             { 

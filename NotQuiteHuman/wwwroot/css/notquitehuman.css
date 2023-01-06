@@ -8,7 +8,7 @@ body {
 }
 * {
     color: var(--main-color) !important;
-
+    border-color: var(--main-color) !important;
 }
 button, .form-control, input {
     background-color: transparent !important;
@@ -51,35 +51,40 @@ span.toggle {
     border-color: var(--main-color) !important;
 }
 /*Traits*/
-.traitselect{
+.traitselect {
     width: 100%
 }
-table{
+
+table {
     min-width: 100%;
 }
-tbody{
-    min-width:100%;     
+
+tbody {
+    min-width: 100%;
     overflow-y: auto;
 }
+
 tr {
     border: 2px solid;
 }
-tr.trait:hover, tr.trait:focus-within {
-    background: linear-gradient(0deg, rgba(208, 168, 92, 0.2), rgba(208, 168, 92, 0.2));
-    
-}
-td {    
-    position: relative;   
-}
-td.col-8,
-td.col-4,
-th.col-8,
-th.col-4{
-    padding: 0px;
+
+    tr.trait:hover, tr.trait:focus-within {
+        background: linear-gradient(0deg, rgba(208, 168, 92, 0.2), rgba(208, 168, 92, 0.2));
+    }
+
+td {
+    position: relative;
 }
 
+    td.col-8,
+    td.col-4,
+    th.col-8,
+    th.col-4 {
+        padding: 0px;
+    }
+
     td > a:first-child {
-        width:100%;
+        width: 100%;
         display: flex;
         padding-top: 8px;
         padding-bottom: 8px;
@@ -89,4 +94,3 @@ th.col-4{
         color: inherit;
         z-index: 0;
     }
-

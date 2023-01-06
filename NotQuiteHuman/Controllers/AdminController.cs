@@ -27,6 +27,7 @@ namespace NotQuiteHuman.Controllers
         #region Traits
         public IActionResult Traits()
         {
+            //Traits overview page
             TraitsOverviewViewModel viewModel= new TraitsOverviewViewModel()
             {
                 Traits = _context.Traits.ToList()
@@ -37,12 +38,14 @@ namespace NotQuiteHuman.Controllers
         }   
         public IActionResult CreateTrait() 
         {
+            //Create Trait page
             return View();
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> CreateTrait(CreateTraitViewModel viewModel)
         {
+            //Create trait action
             if (ModelState.IsValid)
             {
                 _context.Add(new Trait()
@@ -58,6 +61,7 @@ namespace NotQuiteHuman.Controllers
         [HttpGet]
         public IActionResult EditTrait(int? id)
         {
+            //Edit trait page only works with valid Id
             if (id == null) { return NotFound(); }
             Trait trait = _context.Traits.Where(x => x.Id == id).FirstOrDefault();
             Debug.WriteLine(trait);
@@ -74,6 +78,7 @@ namespace NotQuiteHuman.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> EditTrait(int id, EditTraitViewModel viewModel)
         {
+            //Edit trait action Edits only if found
             if(id != viewModel.Id){ return NotFound();}
             if (ModelState.IsValid)
             {
@@ -104,6 +109,7 @@ namespace NotQuiteHuman.Controllers
         [HttpGet]
         public IActionResult DeleteTrait(int id)
         {
+            //Delete page only works if trait exists
             Trait trait = _context.Traits.Where(x=>x.Id == id).FirstOrDefault();
             if (trait != null)
             {
@@ -126,6 +132,7 @@ namespace NotQuiteHuman.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteTraitConfirm(int id)
         {
+            //Delete action
             Trait trait = await _context.Traits.FindAsync(id);
             _context.Traits.Remove(trait);
             await _context.SaveChangesAsync();
@@ -135,6 +142,7 @@ namespace NotQuiteHuman.Controllers
         
         public IActionResult TraitSearch(TraitsOverviewViewModel vm)
         {
+            //search filter for traits
             if (!string.IsNullOrEmpty(vm.TraitSearch))
             {
                 vm.Traits = _context.Traits.Where(x => x.Name.Contains(vm.TraitSearch) || x.Description.Contains(vm.TraitSearch)).ToList();
@@ -149,6 +157,7 @@ namespace NotQuiteHuman.Controllers
         #region Languages
         public IActionResult Languages()
         {
+            //Languages Page
             LanguageOverViewViewModel viewModel = new LanguageOverViewViewModel()
             {
                 Languages = _context.Languages.ToList()
@@ -159,12 +168,14 @@ namespace NotQuiteHuman.Controllers
         }
         public IActionResult CreateLanguage()
         {
+            //Create language page
             return View();
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> CreateLanguage(CreateLanguageViewModel viewModel)
         {
+            //Create Language Action
             if (ModelState.IsValid)
             {
                 _context.Add(new Language()
@@ -181,6 +192,7 @@ namespace NotQuiteHuman.Controllers
         [HttpGet]
         public IActionResult EditLanguage(int? id)
         {
+            //Edit language page only works if valid Id
             if (id == null) { return NotFound(); }
             Language language = _context.Languages.Where(x => x.Id == id).FirstOrDefault();           
             if (language == null) { return NotFound(); }
@@ -197,6 +209,7 @@ namespace NotQuiteHuman.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> EditLanguage(int id, EditLanguageViewModel viewModel)
         {
+            //Edit language Action
             if (id != viewModel.Id) { return NotFound(); }
             if (ModelState.IsValid)
             {
@@ -227,6 +240,7 @@ namespace NotQuiteHuman.Controllers
         }
         public IActionResult DeleteLanguage(int id)
         {
+            //Delete language page
             Language language = _context.Languages.Where(x => x.Id == id).FirstOrDefault();
             if (language != null)
             {
@@ -250,6 +264,7 @@ namespace NotQuiteHuman.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteLanguageConfirm(int id)
         {
+            //Delete Language Action
             Language language = await _context.Languages.FindAsync(id);
             _context.Languages.Remove(language);
             await _context.SaveChangesAsync();
@@ -258,6 +273,7 @@ namespace NotQuiteHuman.Controllers
         }
         public IActionResult LanguageSearch(LanguageOverViewViewModel vm)
         {
+            //Search for Languages
             if (!string.IsNullOrEmpty(vm.LanguageSearch))
             {
                 vm.Languages = _context.Languages.Where(x => x.Name.Contains(vm.LanguageSearch) || x.Description.Contains(vm.LanguageSearch) || x.Type.Contains(vm.LanguageSearch)).ToList();
